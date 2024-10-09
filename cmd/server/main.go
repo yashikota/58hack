@@ -17,6 +17,7 @@ import (
 	"github.com/yashikota/chronotes/pkg/db"
 	"github.com/yashikota/chronotes/pkg/redis"
 	"github.com/yashikota/chronotes/pkg/utils"
+
 )
 
 func main() {
@@ -46,6 +47,9 @@ func main() {
 
 	// Setup JWT
 	utils.LoadPrivateKeyFromEnv()
+
+	// start cron jobs
+	utils.StartCronJobs()
 
 	r.Route("/api/v1", func(r chi.Router) {
 		// Public Routes
